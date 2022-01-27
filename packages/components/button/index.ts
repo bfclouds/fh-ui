@@ -1,7 +1,5 @@
-import FhButton from './src/FhButton.vue'
+import { withInstall } from '../../utils/with-install'
+import Button from './src/Button.vue'
 
-FhButton.install = function(app) {
-  app.component(FhButton.name, FhButton)
-}
-
+export const FhButton = withInstall(Button)
 export default FhButton

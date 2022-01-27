@@ -1,8 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './routes'
+import '../packages/theme-chalk/index.less'
 
 const app = createApp(App)
-app.use(router)
 
 app.mount('#app')

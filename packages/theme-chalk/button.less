@@ -1,5 +1,79 @@
-.button {
-  width: 300px;
-  height: 300px;
-  background-color: red;
+@import (reference) './common/var.less';
+@import (reference) './mixins/config.less';
+
+@btn: ~"@{namespace}-button";
+
+.@{btn} {
+  position: relative;
+  display: inline-block;
+  padding: 0px 15px;
+  height: 32px;
+  user-select: none;
+  border: 1px solid transparent;
+  text-align: center;
+  font-weight: 400;
+  border-radius: 4px;
+  background-color: @btn-bg-color;
+  color: @btn-text-color;
+  font-size: @font-size-medium;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  &:hover {
+    
+  }
+
+  .action-loading {
+    display: inline-block;
+    animation: rotate-360-loading 1s linear infinite;
+    .icon-loading {
+      font-size: inherit;
+      color: #ccc;
+    }
+    @keyframes rotate-360-loading {
+      0% {
+        transform: rotate(0);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  &-icon-only {
+
+  }
+  &-round {
+
+  }
+  &-circle {
+    &.@{btn}-lg {
+      width: 40px;
+      height: 40px;
+      padding: 4.9px 0;
+      font-size: @font-size-lg;
+    }
+    &.@{btn}-default {
+      width: 32px;
+      height: 32px;
+      padding: 3px 0;
+      font-size: @font-size-medium;
+    }
+    &.@{btn}-sm {
+      width: 20px;
+      height: 20px;
+      padding: 2px 0;
+      font-size: @font-size-sm;
+    }
+  }
+
+  &-lg {
+    padding: 0 22px;
+    height: 40px;
+    border-radius: 6px;
+  }
+  &-sm {
+    padding: 0 8px;
+    height: 20px;
+    border-radius: 2px;
+    font-size: @font-size-sm;
+  }
 }

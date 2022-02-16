@@ -7,7 +7,9 @@ function pathResolve(dir: string) {
 }
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue({
+    reactivityTransform: true,
+  })],
   resolve: {
     alias: [
       {

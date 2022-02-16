@@ -1,0 +1,140 @@
+@import (reference) './common/var.less';
+@import (reference) './mixins/config.less';
+
+@excessDialogName: ~"@{namespace}-excess-dialog";
+
+@{excessDialogName} {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 300px;
+  height: 500px;
+  background-color: #fff;
+  z-index: 10;
+  box-shadow: 0 0 12px 1px #ccc;
+  .expand-selecter {
+    position: absolute;
+    user-select: none;
+    width: 20px;
+    height: 20px;
+    &.selecter-top {
+      top: -5px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      cursor: row-resize;
+    }
+    &.selecter-bottom {
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      cursor: row-resize;
+    }
+    &.selecter-left {
+      top: 0;
+      left: -5px;
+      height: 100%;
+      width: 10px;
+      cursor: col-resize;
+    }
+    &.selecter-right {
+      top: 0;
+      right: -5px;
+      height: 100%;
+      width: 10px;
+      cursor: col-resize;
+    }
+    &.selecter-left-top {
+      left: -10px;
+      top: -10px;
+      cursor: nw-resize;
+    }
+    &.selecter-right-top {
+      right: -10px;
+      top: -10px;
+      cursor: ne-resize;
+    }
+    &.selecter-left-bottom {
+      left: -10px;
+      bottom: -10px;
+      cursor: sw-resize;
+    }
+    &.selecter-right-bottom {
+      right: -10px;
+      bottom: -10px;
+      cursor: se-resize;
+    }
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    // line-height: 40px;
+    background-color: @color-bg-excess-dialog;
+    cursor: move;
+    color: #fff;
+    font-weight: 600;
+    user-select: none;
+    .title {
+      margin-left: 20px;
+    }
+    .iconfont {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      margin-right: 6px;
+      cursor: pointer;
+      &.full-screen {
+        margin-left: auto;
+      }
+      &.recovery-screen {
+        font-size: 20px;
+      }
+      &.expand-top {
+        font-size: 18px;
+        transform: rotate(-45deg);
+      }
+      &.icon-guanbi {
+        margin-right: 10px;
+        font-size: 14px;
+      }
+    }
+  }
+  .content {
+    position: relative;
+    height: calc(100% - 120px);
+    overflow: scroll;
+    padding: 10px;
+    .content-mask {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .footer {
+    padding-top: 10px;
+    height: 80px;
+    box-shadow: 0 -1px 6px 0 #ccc;
+    .newview-btn {
+      width: 80%;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 auto;
+      background-color: #e7eaef;
+      text-align: center;
+      color: rgb(48, 48, 48);
+      cursor: pointer;
+      user-select: none;
+    }
+  }
+}

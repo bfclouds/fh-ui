@@ -1,5 +1,6 @@
 @import (reference) './common/var.less';
 @import (reference) './mixins/config.less';
+@import './mixins/_button.less';
 
 @btn: ~"@{namespace}-button";
 
@@ -12,22 +13,24 @@
   border: 1px solid transparent;
   text-align: center;
   font-weight: 400;
-  border-radius: 4px;
-  background-color: @btn-bg-color;
+  // border-radius: 4px;
   color: @btn-text-color;
+  margin: 20px;
   font-size: @font-size-medium;
-  border: 1px solid #ccc;
   cursor: pointer;
   &:hover {
     
   }
-
+  &.active {
+    color: @color-primary;
+    border-color: @color-primary;
+  }
   .action-loading {
     display: inline-block;
-    animation: rotate-360-loading 1s linear infinite;
+    animation: rotate-360-loading 1.4s linear infinite;
     .icon-loading {
       font-size: inherit;
-      color: #ccc;
+      color: #fff;
     }
     @keyframes rotate-360-loading {
       0% {
@@ -38,18 +41,35 @@
       }
     }
   }
-  &-icon-only {
-
+  &-lg {
+    padding: 0 22px;
+    height: 40px;
+    font-size: @font-size-lg;
+  }
+  &-sm {
+    padding: 0 8px;
+    height: 20px;
+    // border-radius: 2px;
+    font-size: @font-size-sm;
   }
   &-round {
-
+    &.@{btn}-lg {
+      border-radius: 6px;
+    }
+    &.@{btn}-default {
+      border-radius: 4px;
+    }
+    &.@{btn}-sm {
+      border-radius: 2px;
+    }
   }
   &-circle {
+    border-radius: 50%;
     &.@{btn}-lg {
       width: 40px;
       height: 40px;
       padding: 4.9px 0;
-      font-size: @font-size-lg;
+      // font-size: @font-size-lg;
     }
     &.@{btn}-default {
       width: 32px;
@@ -64,16 +84,35 @@
       font-size: @font-size-sm;
     }
   }
-
-  &-lg {
-    padding: 0 22px;
-    height: 40px;
-    border-radius: 6px;
+  &-default {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid @color-info;
   }
-  &-sm {
-    padding: 0 8px;
-    height: 20px;
-    border-radius: 2px;
-    font-size: @font-size-sm;
+  &-primary {
+    background-color: @color-primary;
+  }
+  &-info {
+    background-color: @color-info;
+  }
+  &-success {
+    background-color: @color-primary;
+  }
+  &-warning {
+    background-color: @color-warning;
+  }
+  &-error {
+    background-color: @color-error;
+  }
+  .base-wave {
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    animation-iteration-count: 1;
+    animation-duration: .4s;
+    animation-timing-function: linear, cubic-bezier(.17,.67,.83,.67);
+    transition: opacity .4s linear, background-color .4s linear;
   }
 }

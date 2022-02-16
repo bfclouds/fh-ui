@@ -1,0 +1,39 @@
+
+.base-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: inherit;
+  &.base-wave--active {
+    z-index: -1;
+    animation-name: botton-wave-spread, button-wave-pacity;
+  }
+}
+
+@keyframes botton-wave-spread {
+  form {
+    // background-color: inherit;
+    background-color: transparent;
+  }
+  to {
+    left: -6px;
+    right: -6px;
+    top: -6px;
+    bottom: -6px;
+    background-color: inherit;
+  }
+}
+
+@keyframes button-wave-pacity {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: .3;
+  }
+  100% {
+    opacity: 0;
+  }
+}

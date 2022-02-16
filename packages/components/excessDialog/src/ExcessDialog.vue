@@ -16,7 +16,7 @@
       <i class="iconfont icon-expand expand-top" @click="fullHeight"></i>
       <i class="iconfont icon-guanbi" @click="close"></i>
     </div>
-    <div class="content">
+    <div class="content no-scrollbar">
       <div v-show="mouseIsDown" class="content-mask"></div>
       <iframe :src="url" frameborder="0"></iframe>
     </div>
@@ -27,17 +27,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'FhExcessDialog',
 })
 </script>
 
-
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, ref, onBeforeUnmount, defineProps, defineExpose } from 'vue';
-import Button from '@/components/button/Button.vue';
-import './index.less';
 
 const TYPE_TOP = 'top';
 const TYPE_BOTTOM = 'bottom';
@@ -50,8 +47,8 @@ const TYPE_LEFT_BOTTOM = 'left_bottom';
 const TYPE_RIGHT_BOTTOM = 'right_bottom';
 
 const mouseIsDown = ref(false); // 鼠标是否按下
-let lastMovePositionX = null; // 鼠标上次移动的位置x
-let lastMovePositionY = null; // 鼠标上次移动的位置y
+let lastMovePositionX = 0; // 鼠标上次移动的位置x
+let lastMovePositionY = 0; // 鼠标上次移动的位置y
 let handleType = ''; // 操作类型
 
 const isShow = ref(false);
@@ -85,7 +82,7 @@ const props = defineProps({
   },
 });
 
-function selecterMouseDown(el, type) {
+function selecterMouseDown(el: MouseEvent, type: string) {
   const { clientX, clientY } = el;
   // 初始x
   lastMovePositionX = clientX;
@@ -97,7 +94,7 @@ function selecterMouseDown(el, type) {
 }
 
 let timer = 0;
-function selecterMouseMove(el) {
+function selecterMouseMove(el: MouseEvent) {
   const newTimer = new Date().getTime();
   if (!mouseIsDown.value || newTimer - timer < 16) {
     return;

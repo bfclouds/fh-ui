@@ -1,20 +1,6 @@
 <template>
   <div>
-    <FhButton size="lg" active>button1</FhButton>
-    <FhButton size="lg" shape="circle">q</FhButton>
-    <FhButton size="lg" shape="round">button1</FhButton>
-
-    <hr style="margin: 20px;">
-    <FhButton >button1</FhButton>
-    <FhButton shape="circle">q</FhButton>
-    <FhButton shape="round">button1</FhButton>
-    <hr style="margin: 20px;">
-    <FhButton size="sm">button1</FhButton>
-    <FhButton size="sm" shape="circle">q</FhButton>
-    <FhButton size="sm" shape="round">button1</FhButton>
-
-    <hr style="margin: 20px;">
-    <FhButton size="lg" active>button1</FhButton>
+    <FhButton @click="showFhExcessDialog" size="lg" active>button1</FhButton>
     <FhButton size="lg" type="default">button1</FhButton>
     <FhButton size="lg" type="primary">button1</FhButton>
     <FhButton size="lg" type="info">button1</FhButton>
@@ -39,12 +25,21 @@
     <FhButton size="lg" shape="circle" type="error">7</FhButton>
     <!-- <FhButton>button1</FhButton>
     <FhButton size="sm" show-loading>button1</FhButton> -->
-
+    <FhExcessDialog ref="FhExcessDialogRef" title="测试" url="/"></FhExcessDialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { FhButton, FhCol, FhRow } from '../packages/components'
+import { FhButton, FhCol, FhRow, FhExcessDialog, ExcessDailogElement } from '../packages/components'
+
+let FhExcessDialogRef: ExcessDailogElement | null = $ref(null)
+
+function showFhExcessDialog() {
+  if (FhExcessDialogRef) {
+    FhExcessDialogRef.show()
+  }
+}
+
 </script>
 
 <style scoped>
